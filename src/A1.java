@@ -1,31 +1,66 @@
 import java.awt.*;
+import java.awt.event.*;
+import javax.swing.JFrame;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
+public class A1 extends Canvas {
 
-import static javax.swing.BorderFactory.createLineBorder;
+    private int bikeX = 250;
+    private int bikeY = 250;
+    int bikeW = 10;
+    int bikeH = 30;
 
-public class A1 {
+    public A1() {
+        setSize(new Dimension(500, 500));
+        setBackground(Color.BLACK);
+        addKeyListener(new KeyAdapter() {
+//            @Override
+            public void keyPressed(KeyEvent evt) {
+                KeyPressed(evt);
+            }
+        });
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.setColor(Color.RED);
+        g.fillRect(bikeX, bikeY, bikeW, bikeH);
+    }
+
+    private void KeyPressed(KeyEvent evt) {
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_DOWN:
+                bikeY += 5;
+                bikeW = 10;
+                bikeH = 30;
+                break;
+            case KeyEvent.VK_UP:
+                bikeY -= 5;
+                bikeW = 10;
+                bikeH = 30;
+                break;
+            case KeyEvent.VK_LEFT:
+                bikeX -= 5;
+                bikeW = 30;
+                bikeH = 10;
+                break;
+            case KeyEvent.VK_RIGHT:
+                bikeX += 5;
+                bikeW = 30;
+                bikeH = 10;
+                break;
+        }
+
+        repaint();
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Light Cycles");
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBackground(Color.BLUE);
-        frame.setSize(500, 500);
+        A1 ex = new A1();
+        frame.getContentPane().add(ex);
+        frame.pack();
         frame.setResizable(false);
-        frame.setLayout(new GridLayout(5, 5));
-
-        ImageIcon icon = new ImageIcon("images/bike.png");
-        icon.getImage().flush();
-        frame.add(new JLabel(icon, SwingConstants.CENTER));
-
-
-        for (int i = 0; i < 24; i++) {
-            frame.add(new JLabel(".", SwingConstants.CENTER));
-        }
-
-//        frame.pack();
         frame.setVisible(true);
+        ex.requestFocus();
     }
 }
