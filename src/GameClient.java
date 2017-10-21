@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class GameClient extends Canvas {
 
@@ -55,7 +55,16 @@ public class GameClient extends Canvas {
         repaint();
     }
 
+    public static void EnterName() {
+        String name;
+        name = JOptionPane.showInputDialog(null,
+                "Enter a name");
+        JOptionPane.showMessageDialog(null,"Hello, welcome to LightCycles player "+name);
+        System.out.print(name);
+    }
+
     public static void main(String[] args) {
+        EnterName();
         JFrame frame = new JFrame("Light Cycles");
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GameClient ex = new GameClient();
