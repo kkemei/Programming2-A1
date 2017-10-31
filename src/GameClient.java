@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class GameClient extends Canvas {
 
@@ -59,7 +64,7 @@ public class GameClient extends Canvas {
         String name;
         name = JOptionPane.showInputDialog(null,
                 "Enter a name");
-        JOptionPane.showMessageDialog(null,"Hello, welcome to LightCycles player "+name);
+        JOptionPane.showMessageDialog(null,"Hello, welcome to LightCycles "+name);
         System.out.print(name);
     }
 
