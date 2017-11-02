@@ -52,6 +52,8 @@ public class GameClient extends Canvas {
             g.setColor(Color.RED);
             g.fillRect(bikeX, bikeY, bikeW, bikeH);
         } else {
+            g.setColor(Color.RED);
+            g.fillRect(bikeX, bikeY, bikeW, bikeH);
             g.setColor(Color.blue);
             g.fillOval(bike2X, bike2Y, bike2W, bike2H);
         }
@@ -118,7 +120,7 @@ public class GameClient extends Canvas {
                 }
                 break;
             case KeyEvent.VK_W:
-                bike2Y += 5;
+                bike2Y -= 5;
                 bike2W = 10;
                 bike2H = 30;
                 System.out.print("("+bike2X+","+bike2Y+")");
@@ -129,9 +131,9 @@ public class GameClient extends Canvas {
                 }
                 break;
             case KeyEvent.VK_A:
-                bike2Y += 5;
-                bike2W = 10;
-                bike2H = 30;
+                bike2X -= 5;
+                bike2W = 30;
+                bike2H = 10;
                 System.out.print("("+bike2X+","+bike2Y+")");
                 System.out.print(names[1]+" LEFT ("+bike2X+","+bike2Y+")");
 
@@ -140,9 +142,9 @@ public class GameClient extends Canvas {
                 }
                 break;
             case KeyEvent.VK_D:
-                bike2Y += 5;
-                bike2W = 10;
-                bike2H = 30;
+                bike2X += 5;
+                bike2W = 30;
+                bike2H = 10;
                 System.out.print("("+bike2X+","+bike2Y+")");
                 System.out.print(names[1]+" Right ("+bike2X+","+bike2Y+")");
 
