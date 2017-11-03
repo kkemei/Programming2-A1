@@ -17,7 +17,10 @@ public class GameClient extends Canvas {
     private int bike2Y = 50;
     private int bike2W = 10;
     private int bike2H = 30;
-//    String name = "Kip";
+    private int bike3X = 450;
+    private int bike3Y = 400;
+    private int bike3W = 10;
+    private int bike3H = 30;
     private String [] names = new String[21];
     private String numOfPlayers;
     private int number;
@@ -53,6 +56,13 @@ public class GameClient extends Canvas {
             g.fillRect(bikeX, bikeY, bikeW, bikeH);
 //            g.drawLine(bikeX,bikeY,bike2X,bike2Y);
             g.drawString(names[0],bikeX, bikeY);
+        } if (number == 2){
+            g.setColor(Color.RED);
+            g.fillRect(bikeX, bikeY, bikeW, bikeH);
+            g.drawString(names[0],bikeX, bikeY);
+            g.setColor(Color.blue);
+            g.fillOval(bike2X, bike2Y, bike2W, bike2H);
+            g.drawString(names[1],bike2X, bike2Y);
         } else {
             g.setColor(Color.RED);
             g.fillRect(bikeX, bikeY, bikeW, bikeH);
@@ -60,11 +70,16 @@ public class GameClient extends Canvas {
             g.setColor(Color.blue);
             g.fillOval(bike2X, bike2Y, bike2W, bike2H);
             g.drawString(names[1],bike2X, bike2Y);
+            g.setColor(Color.GREEN);
+            g.fillRoundRect(bike3X,bike3Y,bike3W,bike3H, 10,10);
+            g.drawString(names[2],bike3X, bike3Y);
         }
         g.setColor(Color.RED);
         g.drawLine(250,250,bikeX,bikeY);
         g.setColor(Color.BLUE);
         g.drawLine(20,50,bike2X,bike2Y);
+        g.setColor(Color.GREEN);
+        g.drawLine(450,400,bike3X,bike3Y);
 
     }
 
@@ -79,9 +94,9 @@ public class GameClient extends Canvas {
                 System.out.print(names[0]+" DOWN ("+bikeX+","+bikeY+")");
 
                 if (bikeY > 480) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[0]);
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                     JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
@@ -93,9 +108,9 @@ public class GameClient extends Canvas {
                 System.out.print(names[0]+" UP ("+bikeX+","+bikeY+")");
 
                 if (bikeY < 0) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[0]);
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                     JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
@@ -107,10 +122,10 @@ public class GameClient extends Canvas {
                 System.out.print(names[0]+" LEFT ("+bikeX+","+bikeY+")");
 
                 if (bikeX < 0) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[0]);
 
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                     JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
@@ -122,9 +137,9 @@ public class GameClient extends Canvas {
                 System.out.print(names[0]+" RIGHT ("+bikeX+","+bikeY+")");
 
                 if (bikeX > 480) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[0]);
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                 JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
@@ -138,7 +153,7 @@ public class GameClient extends Canvas {
                 if (bike2Y > 480) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                     JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
@@ -152,7 +167,7 @@ public class GameClient extends Canvas {
                 if (bike2Y < 0) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                     JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
@@ -166,7 +181,7 @@ public class GameClient extends Canvas {
                 if (bike2X < 0) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                     JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
@@ -180,7 +195,63 @@ public class GameClient extends Canvas {
                 if (bike2X > 480) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
-                if (bikeX == bike2X & bikeY == bike2Y) {
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
+                break;
+            case KeyEvent.VK_K:
+                bike3Y += 5;
+                bike3W = 10;
+                bike3H = 30;
+                System.out.print("("+bike3X+","+bike3Y+")");
+                System.out.print(names[2]+" DOWN ("+bike3X+","+bike3Y+")");
+
+                if (bike3Y > 480) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[2]);
+                }
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
+                break;
+            case KeyEvent.VK_I:
+                bike3Y -= 5;
+                bike3W = 10;
+                bike3H = 30;
+                System.out.print("("+bike3X+","+bike3Y+")");
+                System.out.print(names[2]+" UP ("+bike3X+","+bike3Y+")");
+
+                if (bike3Y < 0) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[2]);
+                }
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
+                break;
+            case KeyEvent.VK_J:
+                bike3X -= 5;
+                bike3W = 30;
+                bike3H = 10;
+                System.out.print("("+bike3X+","+bike3Y+")");
+                System.out.print(names[2]+" LEFT ("+bike3X+","+bike3Y+")");
+
+                if (bike3X < 0) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[2]);
+                }
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
+                break;
+            case KeyEvent.VK_L:
+                bike3X += 5;
+                bike3W = 30;
+                bike3H = 10;
+                System.out.print("("+bike3X+","+bike3Y+")");
+                System.out.print(names[2]+" RIGHT ("+bike3X+","+bike3Y+")");
+
+                if (bike3X > 480) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[2]);
+                }
+                if (bikeX == bike2X & bikeY == bike2Y || bikeX == bike3X & bikeY == bike3Y || bike2X == bike3X & bike2Y == bike3Y) {
                     JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
