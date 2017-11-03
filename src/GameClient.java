@@ -7,6 +7,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 public class GameClient extends Canvas {
 
     private int bikeX = 250;
@@ -22,12 +24,13 @@ public class GameClient extends Canvas {
     private int bike3W = 10;
     private int bike3H = 30;
     private String [] names = new String[21];
-    private String numOfPlayers;
+//    private String numOfPlayers;
     private int number;
 
 
-    private GameClient() {
 
+    private GameClient() {
+        String numOfPlayers;
         numOfPlayers = JOptionPane.showInputDialog(null,
                 "How many players (no more than 22)");
         number =  Integer.parseInt(numOfPlayers);
@@ -46,7 +49,6 @@ public class GameClient extends Canvas {
                 KeyPressed(evt);
             }
         });
-//        Boundaries();
     }}
 
     public void paint(Graphics g) {
@@ -54,7 +56,6 @@ public class GameClient extends Canvas {
         if (number == 1) {
             g.setColor(Color.RED);
             g.fillRect(bikeX, bikeY, bikeW, bikeH);
-//            g.drawLine(bikeX,bikeY,bike2X,bike2Y);
             g.drawString(names[0],bikeX, bikeY);
         } if (number == 2){
             g.setColor(Color.RED);
@@ -83,7 +84,7 @@ public class GameClient extends Canvas {
 
     }
 
-    public void KeyPressed(KeyEvent evt) {
+    private void KeyPressed(KeyEvent evt) {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_DOWN:
                 bikeY += 5;
@@ -256,43 +257,13 @@ public class GameClient extends Canvas {
                 }
                 break;
         }
-
         repaint();
     }
 
-//    public void Boundaries(){
-//        if (bikeX < 0) {
-//            JOptionPane.showMessageDialog(null,"GAME OVER");
-//        }
-//
-//    }
-
-//    public void EnterName() {
-////        String name;
-//        name = JOptionPane.showInputDialog(null,
-//                "Enter a name");
-//        JOptionPane.showMessageDialog(null,"Hello, welcome to LightCycles "+name);
-//        System.out.print(name);
-////        return name;
-
-
-//        numOfPlayers = JOptionPane.showInputDialog(null,
-//                "How many players (no more than 22)");
-//        number =  Integer.parseInt(numOfPlayers);
-//        for (int i = 0; i < number;
-//             i++) {
-//            names[i] = JOptionPane.showInputDialog(null,
-//                    "Enter players name");
-//            JOptionPane.showMessageDialog(null, "Hello, welcome to LightCycles " + names[i]);
-//            System.out.print(names[i]);
-//            return;
-//    }}
 
     public static void main(String[] args) {
-//        new GameClient().EnterName();
-
         JFrame frame = new JFrame("Light Cycles");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         GameClient ex = new GameClient();
         frame.getContentPane().add(ex);
         frame.pack();
