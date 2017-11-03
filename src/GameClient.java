@@ -13,7 +13,7 @@ public class GameClient extends Canvas {
     private int bikeY = 250;
     private int bikeW = 10;
     private int bikeH = 30;
-    private int bike2X = 25;
+    private int bike2X = 20;
     private int bike2Y = 50;
     private int bike2W = 10;
     private int bike2H = 30;
@@ -64,7 +64,7 @@ public class GameClient extends Canvas {
         g.setColor(Color.RED);
         g.drawLine(250,250,bikeX,bikeY);
         g.setColor(Color.BLUE);
-        g.drawLine(25,50,bike2X,bike2Y);
+        g.drawLine(20,50,bike2X,bike2Y);
 
     }
 
@@ -81,6 +81,9 @@ public class GameClient extends Canvas {
                 if (bikeY > 480) {
                     JOptionPane.showMessageDialog(null,"GAME OVER");
                 }
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
                 break;
             case KeyEvent.VK_UP:
                 bikeY -= 5;
@@ -91,6 +94,9 @@ public class GameClient extends Canvas {
 
                 if (bikeY < 0) {
                     JOptionPane.showMessageDialog(null,"GAME OVER");
+                }
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
             case KeyEvent.VK_LEFT:
@@ -104,7 +110,9 @@ public class GameClient extends Canvas {
                     JOptionPane.showMessageDialog(null,"GAME OVER");
 
                 }
-
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
                 break;
             case KeyEvent.VK_RIGHT:
                 bikeX += 5;
@@ -116,7 +124,9 @@ public class GameClient extends Canvas {
                 if (bikeX > 480) {
                     JOptionPane.showMessageDialog(null,"GAME OVER");
                 }
-
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
                 break;
             case KeyEvent.VK_S:
                 bike2Y += 5;
@@ -127,6 +137,9 @@ public class GameClient extends Canvas {
 
                 if (bike2Y > 480) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
+                }
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
             case KeyEvent.VK_W:
@@ -139,6 +152,9 @@ public class GameClient extends Canvas {
                 if (bike2Y < 0) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
                 break;
             case KeyEvent.VK_A:
                 bike2X -= 5;
@@ -150,6 +166,9 @@ public class GameClient extends Canvas {
                 if (bike2X < 0) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
+                }
                 break;
             case KeyEvent.VK_D:
                 bike2X += 5;
@@ -160,6 +179,9 @@ public class GameClient extends Canvas {
 
                 if (bike2X > 480) {
                     JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
+                }
+                if (bikeX == bike2X & bikeY == bike2Y) {
+                    JOptionPane.showMessageDialog(null,"GAME OVER. You Crashed");
                 }
                 break;
         }
@@ -199,7 +221,7 @@ public class GameClient extends Canvas {
 //        new GameClient().EnterName();
 
         JFrame frame = new JFrame("Light Cycles");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GameClient ex = new GameClient();
         frame.getContentPane().add(ex);
         frame.pack();
