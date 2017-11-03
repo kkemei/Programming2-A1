@@ -51,20 +51,30 @@ public class GameClient extends Canvas {
         if (number == 1) {
             g.setColor(Color.RED);
             g.fillRect(bikeX, bikeY, bikeW, bikeH);
+//            g.drawLine(bikeX,bikeY,bike2X,bike2Y);
+            g.drawString(names[0],bikeX, bikeY);
         } else {
             g.setColor(Color.RED);
             g.fillRect(bikeX, bikeY, bikeW, bikeH);
+            g.drawString(names[0],bikeX, bikeY);
             g.setColor(Color.blue);
             g.fillOval(bike2X, bike2Y, bike2W, bike2H);
+            g.drawString(names[1],bike2X, bike2Y);
         }
+        g.setColor(Color.RED);
+        g.drawLine(250,250,bikeX,bikeY);
+        g.setColor(Color.BLUE);
+        g.drawLine(25,50,bike2X,bike2Y);
+
     }
 
-    private void KeyPressed(KeyEvent evt) {
+    public void KeyPressed(KeyEvent evt) {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_DOWN:
                 bikeY += 5;
                 bikeW = 10;
                 bikeH = 30;
+
                 System.out.print("("+bikeX+","+bikeY+")");
                 System.out.print(names[0]+" DOWN ("+bikeX+","+bikeY+")");
 
@@ -116,7 +126,7 @@ public class GameClient extends Canvas {
                 System.out.print(names[1]+" DOWN ("+bike2X+","+bike2Y+")");
 
                 if (bike2Y > 480) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
                 break;
             case KeyEvent.VK_W:
@@ -127,7 +137,7 @@ public class GameClient extends Canvas {
                 System.out.print(names[1]+" UP ("+bike2X+","+bike2Y+")");
 
                 if (bike2Y < 0) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
                 break;
             case KeyEvent.VK_A:
@@ -138,7 +148,7 @@ public class GameClient extends Canvas {
                 System.out.print(names[1]+" LEFT ("+bike2X+","+bike2Y+")");
 
                 if (bike2X < 0) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
                 break;
             case KeyEvent.VK_D:
@@ -149,7 +159,7 @@ public class GameClient extends Canvas {
                 System.out.print(names[1]+" Right ("+bike2X+","+bike2Y+")");
 
                 if (bike2X > 480) {
-                    JOptionPane.showMessageDialog(null,"GAME OVER");
+                    JOptionPane.showMessageDialog(null,"GAME OVER "+ names[1]);
                 }
                 break;
         }
