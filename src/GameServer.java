@@ -6,10 +6,9 @@ import java.net.UnknownHostException;
 
 public class GameServer {
 
-    final static String INET_ADDR = "224.0.0.3";
-    final static int PORT = 8888;
-
     public static void main(String[] args) throws UnknownHostException {
+        String INET_ADDR = "224.0.0.3";
+        int PORT = 8888;
         InetAddress address = InetAddress.getByName(INET_ADDR);
         byte[] buf = new byte[256];
         try (MulticastSocket clientSocket = new MulticastSocket(PORT)){
